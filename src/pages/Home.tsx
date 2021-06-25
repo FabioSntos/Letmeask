@@ -11,6 +11,7 @@ import { useAuth } from '../hooks/useAuth';
 import { FormEvent } from 'react';
 import { useState } from 'react';
 import { database } from '../services/firebase';
+import toast from 'react-hot-toast';
 
 const Home = () => {
   const history = useHistory();
@@ -30,8 +31,13 @@ const Home = () => {
     }
     const roomRef = database.ref(`rooms/${roomCode}`).get();
 
+    function notify() {
+      toast.error('sala não existe');
+    }
+
     if (!(await roomRef).exists()) {
-      alert('Sala não existe.');
+      notify();
+      //alert('Sala não existe.');
       return;
     }
     history.push(`rooms/${roomCode}`);
