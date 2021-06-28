@@ -19,7 +19,7 @@ type RoomParams = {
   id: string;
 };
 
-const Room = () => {
+const AdminRoom = () => {
   <Toaster position="top-center" reverseOrder={false} />;
   const { user } = useAuth();
   const params = useParams<RoomParams>();
@@ -106,4 +106,4 @@ const Room = () => {
   );
 };
 
-export default Room;
+export default AdminRoom;
